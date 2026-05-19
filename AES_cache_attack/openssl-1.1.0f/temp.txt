@@ -1,0 +1,13 @@
+/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-1.1.0f
+
+make clean
+
+./Configure linux-generic64 shared no-asm no-hw no-afalgeng \
+    --prefix=/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install
+
+sudo make
+sudo make install_sw
+
+-I/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/include
+-L/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/lib
+-lssl -lcrypto
