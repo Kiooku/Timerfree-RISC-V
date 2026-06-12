@@ -18,7 +18,7 @@ You'll find all the atacks explained in the paper:
 - `flush_reload`: `Flush+Reload` implemented using timerfree methods;
 - `main_page_walk`: Distinction between "Page walk" and "No page walk" using `perf_event_open`;
 - `spectre`: Spectre attack of the paper ["Spectre Attacks: Exploiting Speculative Execution"](https://spectreattack.com/spectre.pdf) with timerfree methods;
-- `cover_channel`: Covert channel from the paper ["Cross-Core Covert Channel for RISC-V: Implementation, Countermeasures and Cross-Platform Analysis"](https://telecom-paris.hal.science/hal-05510026/) with timerfree methods.
+- `CoverChannel`: Covert channel from the paper ["Cross-Core Covert Channel for RISC-V: Implementation, Countermeasures and Cross-Platform Analysis"](https://telecom-paris.hal.science/hal-05510026/) with timerfree methods.
 
 ## CPU Usage Impact with our Attacks
 
