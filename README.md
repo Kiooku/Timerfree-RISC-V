@@ -22,7 +22,36 @@ You'll find all the atacks explained in the paper:
 
 ## CPU Usage Impact with our Attacks
 
-TODO table of CPU usage in markdown
+| CPU Usage | Background Applications / Stress Linux Test                    |
+| --------- | -------------------------------------------------------------- |
+| 25%       | One RV8 process (*`AES`*)                                      |
+| 50%       | Two RV8 processes (*`AES`*, *`bigint`*)                        |
+| 75%       | Three RV8 processes (*`AES`*, *`bigint`*, *`miniz`*)           |
+| 100%      | Four RV8 processes (*`AES`*, *`bigint`*, *`miniz`*, *`qsort`*) |
+
+
+| Attack | CPU Usage | `rdcycle` | Perf Counter | Thread Clock | Clock Fixed |
+|---------|-----------|-----------|--------------|--------------|-------------|
+| Spectre V1 | 25% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
+| Spectre V1 | 50% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
+| Spectre V1 | 75% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
+| Spectre V1 | 100% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
+| AES Cache | 25% | XXX | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
+| AES Cache | 50% | XXX | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
+| AES Cache | 75% | XXX | $\color{red}{\textsf{Success}}$ | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
+| AES Cache | 100% | XXX | $\color{red}{\textsf{Success}}$ | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
+| Page Walk | 25% | - | $\color{green}{\textsf{Success}}$ | - | - |
+| Page Walk | 50% | - | $\color{green}{\textsf{Success}}$ | - | - |
+| Page Walk | 75% | - | $\color{green}{\textsf{Success}}$ | - | - |
+| Page Walk | 100% | - | $\color{green}{\textsf{Success}}$ | - | - |
+| Covert Channel | 25% | XXX | XXX | XXX | XXX |
+| Covert Channel | 50% | XXX | XXX | XXX | XXX |
+| Covert Channel | 75% | XXX | XXX | XXX | XXX |
+| Covert Channel | 100% | XXX | XXX | XXX | XXX |
+
+- $\color{green}{\textsf{Success}}$: Works 100% of the time
+- $\color{orange}{\textsf{Success}}$: Works 90% of the time
+- $\color{red}{\textsf{Success}}$: Works 35–40% of the time
 
 ## Citing Paper and Artifacts
 
