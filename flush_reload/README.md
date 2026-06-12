@@ -6,7 +6,7 @@ The attacker distinguish the action of the victim (`vote_a` or `vote_b`) using t
 
 This example is inpired by the exercice 2 of [Computer Architecture and System Software - Session 7: Caches and Microarchitectural Timing Attacks](https://cass-kul.github.io/exercises/7-cache/) from KU Louvain.
 
-## Run
+# Run
 ```
 # Compile for thread counter
 gcc -O1 -march=rv64gc -o flush_reload_timerfree flush_reload_timerfree.c -lpthread
@@ -22,5 +22,5 @@ gcc flush_reload_perf_event_open.c -o flush_reload_perf_event_open
 gcc flush_reload_rdcycle.c -Os -o flush_reload_rdcycle
 ```
 
-## Tested on 
+# Tested on 
 C910
