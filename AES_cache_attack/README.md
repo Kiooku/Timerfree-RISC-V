@@ -4,7 +4,7 @@ AES full key recovery of the openssl-1.1.0f T-Table implementation using timerfr
 
 For openssl installation, you can follow the explanation from [`nepoche` repository](https://github.com/nepoche/Flush-Reload#openssl-installation).
 
-## Run
+# Run
 
 ```
 # AES Flush+Reload using rdcycle
@@ -20,6 +20,6 @@ g++ newspy_timerless.cpp -o newspy_timerless -I/home/beagle/path_to/openssl-inst
 g++ newspy_perf_event_open.cpp -o newspy_perf_event_open -I/home/beagle/path_to/openssl-install/include -L/home/beagle/path_to/openssl-install/lib -lcrypto
 ```
 
-## Tested on
+# Tested on
 
 C910
