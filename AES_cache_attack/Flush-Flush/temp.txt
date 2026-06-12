@@ -1,7 +1,0 @@
-g++ newspy.cpp -o newspy -I/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/include -L/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/lib -lcrypto
-
-g++ newspy_clock_timer.cpp -o newspy_clock_timer -I/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/include -L/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/lib -lcrypto
-
-g++ newspy_timerless.cpp -o newspy_timerless -I/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/include -L/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/lib -lcrypto
-
-g++ newspy_perf_event_open.cpp -o newspy_perf_event_open -I/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/include -L/home/beagle/Documents/RISC_V_Gaetan/nepoche_flush_reload_aes/openssl-install/lib -lcrypto

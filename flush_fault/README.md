@@ -1,11 +1,9 @@
-# Instruction Flush+Fault PoCs
+# Flush+Fault and Flush+Ret from the [Security-RISC](https://github.com/cispa/Security-RISC/tree/main)
 
-Contains one PoC for the default Flush+Fault (`./flush-fault.c`) and one for the return-based variant (`./flush-ret.c`).
-
+Flush+Fault (`./flush-fault.c`) and one for the return-based variant (`./flush-ret.c`) done with timerless methods.
 
 # Run Code
-Run `make` then `./flush-fault` or `./flush-ret`.
-Afterward, execute `python3 stats.py flush-fault` or `python3 stats.py flush-ret`.
+Afterward, execute `python3 stats.py flush-fault` or `python3 stats.py flush-ret` for example.
 
-# Works on 
-C906,U74,C910,C908
+# Tested on 
+C910
