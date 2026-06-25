@@ -30,28 +30,37 @@ You'll find all the atacks explained in the paper:
 | 100%      | Four RV8 processes (*`AES`*, *`bigint`*, *`miniz`*, *`qsort`*) |
 
 
-| Attack | CPU Usage | `rdcycle` | Perf Counter | Thread Clock | Clock Fixed |
-|---------|-----------|-----------|--------------|--------------|-------------|
-| Spectre V1 | 25% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| Spectre V1 | 50% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| Spectre V1 | 75% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| Spectre V1 | 100% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| AES Cache | 25% | XXX | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| AES Cache | 50% | XXX | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| AES Cache | 75% | XXX | $\color{red}{\textsf{Success}}$ | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| AES Cache | 100% | XXX | $\color{red}{\textsf{Success}}$ | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| Page Walk | 25% | - | $\color{green}{\textsf{Success}}$ | - | - |
-| Page Walk | 50% | - | $\color{green}{\textsf{Success}}$ | - | - |
-| Page Walk | 75% | - | $\color{green}{\textsf{Success}}$ | - | - |
-| Page Walk | 100% | - | $\color{green}{\textsf{Success}}$ | - | - |
-| Covert Channel | 25% | XXX | XXX | XXX | XXX |
-| Covert Channel | 50% | XXX | XXX | XXX | XXX |
-| Covert Channel | 75% | XXX | XXX | XXX | XXX |
-| Covert Channel | 100% | XXX | XXX | XXX | XXX |
+| **Attack**       | **CPU usage** | **`rdcycle`** | **`perf_event_open`**       | **Counter thread** | **`clock_gettime`** |
+|-----------------------|--------------------|-------------------------|-------------------------------------------|-------------------------|----------------------------------|
+| Spectre V1            | 25\%               | 50/50                   | 50/50                                     | 26/50                   | 50/50                            |
+| Spectre V1            | 50\%               | 50/50                   | 50/50                                     | 34/50                   | 49/50                            |
+| Spectre V1            | 75\%               | 50/50                   | 49/50                                     | 34/50                   | 49/50                            |
+| Spectre V1            | 100\%              | 50/50                   | 45/50                                     | 21/50                   | 50/50                            |
+| AES cache             | 25\%               | 48/50                   | 35/50                                     | 50/50                   | 50/50                            |
+| AES cache             | 50\%               | 49/50                   | 38/50                                     | 50/50                   | 50/50                            |
+| AES cache             | 75\%               | 49/50                   | 31/50                                     | 48/50                   | 50/50                            |
+| AES cache             | 100\%              | 48/50                   | 40/50                                     | 38/50                   | 50/50                            |
+| Covert Channel        | 25\%               | 100\%                   | -                                         | 99\%                    | -                                |
+| Covert Channel        | 50\%               | 100\%                   | -                                         | 99\%                    | -                                |
+| Covert Channel        | 75\%               | 100\%                   | -                                         | 99\%                    | -                                |
+| Covert Channel        | 100\%              | 100\%                   | -                                         | 99\%                    | -                                |
+| `Flush+Reload` | 25\%               | 50/50                   | 38/40                                     | 50/50                   | 49/50                            |
+| `Flush+Reload` | 50\%               | 50/50                   | 37/50                                     | 50/50                   | 50/50                            |
+| `Flush+Reload` | 75\%               | 50/50                   | 40/50                                     | 20/50                   | 49/50                            |
+| `Flush+Reload` | 100\%              | 50/50                   | 38/50                                     | 10/20                   | 50/50                            |
+| `Flush+Flush`  | 25\%               | 50/50                   | -                                         | 50/50                   | 50/50                            |
+| `Flush+Flush`  | 50\%               | 50/50                   | -                                         | 50/50                   | 50/50                            |
+| `Flush+Flush`  | 75\%               | 48/50                   | -                                         | 50/50                   | 50/50                            |
+| `Flush+Flush`  | 100\%              | 49/50                   | -                                         | 50/50                   | 50/50                            |
+| `Flush+Fault`  | 25\%               | 100\%                   | 100\%                                     | 100\%                   | 100\%                            |
+| `Flush+Fault`  | 50\%               | 100\%                   | 100\%                                     | 100\%                   | 100\%                            |
+| `Flush+Fault`  | 75\%               | 100\%                   | 100\%                                     | 100\%                   | 50\%                             |
+| `Flush+Fault`  | 100\%              | 100\%                   | 100\%                                     | 50\%                    | 50\%                             |
+| `Flush+Ret`    | 25\%               | 100\%                   | 100\%                                     | 100\%                   | -                                |
+| `Flush+Ret`    | 50\%               | 100\%                   | 100\%                                     | 100\%                   | -                                |
+| `Flush+Ret`    | 75\%               | 100\%                   | 100\%                                     | 100\%                   | -                                |
+| `Flush+Ret`    | 100\%              | 100\%                   | 100\%                                     | 50\%                    | -                                |
 
-- $\color{green}{\textsf{Success}}$: Works 100% of the time
-- $\color{orange}{\textsf{Success}}$: Works 90% of the time
-- $\color{red}{\textsf{Success}}$: Works 35–40% of the time
 
 ## Citing Paper and Artifacts
 
