@@ -7,9 +7,10 @@ Repository of the paper "Timerfree cache timing attacks on RISC-V".
 You'll find in each folder a README file describing how to run it.
 
 The timerfree methods used are:
-- thread: TODO explain using Mahreen description;
-- `perf_event_open`: TODO explain using Mahreen description;
-- clock_fixed: TODO explain using Mahreen description.
+- **`rdcycle`**: This RISC-V instruction provides a high-resolution baseline for evaluating alternative timing sources.
+- **Counter Thread**: A POSIX thread pinned to a sibling hart continuously increments a shared sw counter. This follows the counter-thread idea used in ARMageddon. It is sensitive to scheduling, interrupts, and harts.
+- **clock gettime**: We tested POSIX clock gettime with two clock IDs: clock process cputime id and clock monotonic raw. Its effective resolution depends on the kernel, clock source, syscall path, and scheduling.
+- **perf event open**: Linux syscall (perf event open) exposes hardware cycle events. We configure it to count CPU cycles for the monitored task while excluding kernel and hypervisor time. This method depends on kernel configuration and the perf event paranoid policy, which controls whether unprivileged users can access performance counter.
 
 You'll find all the atacks explained in the paper:
 - `AES_cache_attack`: `Flush+Reload` attack on AES using T-Table of openssl-1.1.0f *(Inspired by [`nepoche` `Flush+Reload` github repository](https://github.com/nepoche/Flush-Reload))*;
@@ -28,39 +29,6 @@ You'll find all the atacks explained in the paper:
 | 50%       | Two RV8 processes (*`AES`*, *`bigint`*)                        |
 | 75%       | Three RV8 processes (*`AES`*, *`bigint`*, *`miniz`*)           |
 | 100%      | Four RV8 processes (*`AES`*, *`bigint`*, *`miniz`*, *`qsort`*) |
-
-
-| **Attack**       | **CPU usage** | **`rdcycle`** | **`perf_event_open`**       | **Counter thread** | **`clock_gettime`** |
-|-----------------------|--------------------|-------------------------|-------------------------------------------|-------------------------|----------------------------------|
-| Spectre V1            | 25\%               | 50/50                   | 50/50                                     | 26/50                   | 50/50                            |
-| Spectre V1            | 50\%               | 50/50                   | 50/50                                     | 34/50                   | 49/50                            |
-| Spectre V1            | 75\%               | 50/50                   | 49/50                                     | 34/50                   | 49/50                            |
-| Spectre V1            | 100\%              | 50/50                   | 45/50                                     | 21/50                   | 50/50                            |
-| AES cache             | 25\%               | 48/50                   | 35/50                                     | 50/50                   | 50/50                            |
-| AES cache             | 50\%               | 49/50                   | 38/50                                     | 50/50                   | 50/50                            |
-| AES cache             | 75\%               | 49/50                   | 31/50                                     | 48/50                   | 50/50                            |
-| AES cache             | 100\%              | 48/50                   | 40/50                                     | 38/50                   | 50/50                            |
-| Covert Channel        | 25\%               | 100\%                   | -                                         | 99\%                    | -                                |
-| Covert Channel        | 50\%               | 100\%                   | -                                         | 99\%                    | -                                |
-| Covert Channel        | 75\%               | 100\%                   | -                                         | 99\%                    | -                                |
-| Covert Channel        | 100\%              | 100\%                   | -                                         | 99\%                    | -                                |
-| `Flush+Reload` | 25\%               | 50/50                   | 38/40                                     | 50/50                   | 49/50                            |
-| `Flush+Reload` | 50\%               | 50/50                   | 37/50                                     | 50/50                   | 50/50                            |
-| `Flush+Reload` | 75\%               | 50/50                   | 40/50                                     | 20/50                   | 49/50                            |
-| `Flush+Reload` | 100\%              | 50/50                   | 38/50                                     | 10/20                   | 50/50                            |
-| `Flush+Flush`  | 25\%               | 50/50                   | -                                         | 50/50                   | 50/50                            |
-| `Flush+Flush`  | 50\%               | 50/50                   | -                                         | 50/50                   | 50/50                            |
-| `Flush+Flush`  | 75\%               | 48/50                   | -                                         | 50/50                   | 50/50                            |
-| `Flush+Flush`  | 100\%              | 49/50                   | -                                         | 50/50                   | 50/50                            |
-| `Flush+Fault`  | 25\%               | 100\%                   | 100\%                                     | 100\%                   | 100\%                            |
-| `Flush+Fault`  | 50\%               | 100\%                   | 100\%                                     | 100\%                   | 100\%                            |
-| `Flush+Fault`  | 75\%               | 100\%                   | 100\%                                     | 100\%                   | 50\%                             |
-| `Flush+Fault`  | 100\%              | 100\%                   | 100\%                                     | 50\%                    | 50\%                             |
-| `Flush+Ret`    | 25\%               | 100\%                   | 100\%                                     | 100\%                   | -                                |
-| `Flush+Ret`    | 50\%               | 100\%                   | 100\%                                     | 100\%                   | -                                |
-| `Flush+Ret`    | 75\%               | 100\%                   | 100\%                                     | 100\%                   | -                                |
-| `Flush+Ret`    | 100\%              | 100\%                   | 100\%                                     | 50\%                    | -                                |
-
 
 ## Citing Paper and Artifacts
 
