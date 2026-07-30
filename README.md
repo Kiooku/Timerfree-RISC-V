@@ -7,9 +7,10 @@ Repository of the paper "Timerfree cache timing attacks on RISC-V".
 You'll find in each folder a README file describing how to run it.
 
 The timerfree methods used are:
-- thread: TODO explain using Mahreen description;
-- `perf_event_open`: TODO explain using Mahreen description;
-- clock_fixed: TODO explain using Mahreen description.
+- **`rdcycle`**: This RISC-V instruction provides a high-resolution baseline for evaluating alternative timing sources.
+- **Counter Thread**: A POSIX thread pinned to a sibling hart continuously increments a shared sw counter. This follows the counter-thread idea used in ARMageddon. It is sensitive to scheduling, interrupts, and harts.
+- **clock gettime**: We tested POSIX clock gettime with two clock IDs: clock process cputime id and clock monotonic raw. Its effective resolution depends on the kernel, clock source, syscall path, and scheduling.
+- **perf event open**: Linux syscall (perf event open) exposes hardware cycle events. We configure it to count CPU cycles for the monitored task while excluding kernel and hypervisor time. This method depends on kernel configuration and the perf event paranoid policy, which controls whether unprivileged users can access performance counter.
 
 You'll find all the atacks explained in the paper:
 - `AES_cache_attack`: `Flush+Reload` attack on AES using T-Table of openssl-1.1.0f *(Inspired by [`nepoche` `Flush+Reload` github repository](https://github.com/nepoche/Flush-Reload))*;
@@ -28,30 +29,6 @@ You'll find all the atacks explained in the paper:
 | 50%       | Two RV8 processes (*`AES`*, *`bigint`*)                        |
 | 75%       | Three RV8 processes (*`AES`*, *`bigint`*, *`miniz`*)           |
 | 100%      | Four RV8 processes (*`AES`*, *`bigint`*, *`miniz`*, *`qsort`*) |
-
-
-| Attack | CPU Usage | `rdcycle` | Perf Counter | Thread Clock | Clock Fixed |
-|---------|-----------|-----------|--------------|--------------|-------------|
-| Spectre V1 | 25% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| Spectre V1 | 50% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| Spectre V1 | 75% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| Spectre V1 | 100% | XXX | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| AES Cache | 25% | XXX | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| AES Cache | 50% | XXX | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| AES Cache | 75% | XXX | $\color{red}{\textsf{Success}}$ | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| AES Cache | 100% | XXX | $\color{red}{\textsf{Success}}$ | $\color{orange}{\textsf{Success}}$ | $\color{green}{\textsf{Success}}$ |
-| Page Walk | 25% | - | $\color{green}{\textsf{Success}}$ | - | - |
-| Page Walk | 50% | - | $\color{green}{\textsf{Success}}$ | - | - |
-| Page Walk | 75% | - | $\color{green}{\textsf{Success}}$ | - | - |
-| Page Walk | 100% | - | $\color{green}{\textsf{Success}}$ | - | - |
-| Covert Channel | 25% | XXX | XXX | XXX | XXX |
-| Covert Channel | 50% | XXX | XXX | XXX | XXX |
-| Covert Channel | 75% | XXX | XXX | XXX | XXX |
-| Covert Channel | 100% | XXX | XXX | XXX | XXX |
-
-- $\color{green}{\textsf{Success}}$: Works 100% of the time
-- $\color{orange}{\textsf{Success}}$: Works 90% of the time
-- $\color{red}{\textsf{Success}}$: Works 35–40% of the time
 
 ## Citing Paper and Artifacts
 
