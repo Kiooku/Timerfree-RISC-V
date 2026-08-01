@@ -1,26 +1,25 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 """
-path_hpc_files: list[str] = ["hpc_results/ff_hpc/L1I/ff_clock_fixed_hpc", 
-                             "hpc_results/ff_hpc/L1I/ff_rdcycle_hpc", 
+path_hpc_files: list[str] = ["hpc_results/flush_flush_hpc/L1I/flush_flush_clock_fixed_hpc", 
+                             "hpc_results/flush_flush_hpc/L1I/flush_flush_rdcycle_hpc", 
 
-                             "hpc_results/fr_hpc/L1I/fr_clock_fixed_hpc", 
-                             "hpc_results/fr_hpc/L1I/fr_rdcycle_hpc", 
-                             "hpc_results/fr_hpc/L1I/fr_perf_event_open_hpc",
+                             "hpc_results/flush_reload_hpc/L1I/flush_reload_clock_fixed_hpc", 
+                             "hpc_results/flush_reload_hpc/L1I/flush_reload_rdcycle_hpc", 
+                             "hpc_results/flush_reload_hpc/L1I/flush_reload_perf_event_open_hpc",
 
-                             "hpc_results/cispa_ff_hpc/L1I/flush_fault_clock_fixed_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1I/flush_fault_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1I/flush_fault_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1I/flush_fault_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1I/flush_fault_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_fault_hpc/L1I/flush_fault_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1I/flush_fault_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1I/flush_fault_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1I/flush_fault_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1I/flush_fault_perf_event_open_hpc",
                              
-                             "hpc_results/cispa_fr_hpc/L1I/flush_ret_clock_fixed_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1I/flush_ret_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1I/flush_ret_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1I/flush_ret_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1I/flush_ret_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_ret_hpc/L1I/flush_ret_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1I/flush_ret_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1I/flush_ret_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1I/flush_ret_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1I/flush_ret_perf_event_open_hpc",
 
                              "hpc_results/spectre_hpc/L1I/spectre_clock_monotonic_hpc", 
                              "hpc_results/spectre_hpc/L1I/spectre_clock_process_hpc", 
@@ -34,24 +33,24 @@ path_hpc_files: list[str] = ["hpc_results/ff_hpc/L1I/ff_clock_fixed_hpc",
                              "hpc_results/rv8_hpc/L1I/qsort_hpc"]
 """
 """
-path_hpc_files: list[str] = ["hpc_results/ff_hpc/L1D_Read/ff_clock_fixed_hpc", 
-                             "hpc_results/ff_hpc/L1D_Read/ff_rdcycle_hpc", 
+path_hpc_files: list[str] = ["hpc_results/flush_flush_hpc/L1D_Read/flush_flush_clock_fixed_hpc", 
+                             "hpc_results/flush_flush_hpc/L1D_Read/flush_flush_rdcycle_hpc", 
 
-                             "hpc_results/fr_hpc/L1D_Read/fr_clock_fixed_hpc", 
-                             "hpc_results/fr_hpc/L1D_Read/fr_rdcycle_hpc", 
-                             "hpc_results/fr_hpc/L1D_Read/fr_perf_event_open_hpc",
+                             "hpc_results/flush_reload_hpc/L1D_Read/flush_reload_clock_fixed_hpc", 
+                             "hpc_results/flush_reload_hpc/L1D_Read/flush_reload_rdcycle_hpc", 
+                             "hpc_results/flush_reload_hpc/L1D_Read/flush_reload_perf_event_open_hpc",
 
-                             "hpc_results/cispa_ff_hpc/L1D_Read/flush_fault_clock_fixed_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1D_Read/flush_fault_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1D_Read/flush_fault_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1D_Read/flush_fault_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1D_Read/flush_fault_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Read/flush_fault_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Read/flush_fault_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Read/flush_fault_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Read/flush_fault_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Read/flush_fault_perf_event_open_hpc",
                             
-                             "hpc_results/cispa_fr_hpc/L1D_Read/flush_ret_clock_fixed_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1D_Read/flush_ret_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1D_Read/flush_ret_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1D_Read/flush_ret_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1D_Read/flush_ret_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Read/flush_ret_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Read/flush_ret_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Read/flush_ret_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Read/flush_ret_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Read/flush_ret_perf_event_open_hpc",
 
                              "hpc_results/spectre_hpc/L1D_Read/spectre_clock_monotonic_hpc", 
                              "hpc_results/spectre_hpc/L1D_Read/spectre_clock_process_hpc", 
@@ -63,27 +62,26 @@ path_hpc_files: list[str] = ["hpc_results/ff_hpc/L1D_Read/ff_clock_fixed_hpc",
                              "hpc_results/rv8_hpc/L1D_Read/bigint_hpc",
                              "hpc_results/rv8_hpc/L1D_Read/miniz_hpc",
                              "hpc_results/rv8_hpc/L1D_Read/qsort_hpc"]
-
 """
 """
-path_hpc_files: list[str] = ["hpc_results/ff_hpc/L1D_Write/ff_clock_fixed_hpc", 
-                             "hpc_results/ff_hpc/L1D_Write/ff_rdcycle_hpc", 
+path_hpc_files: list[str] = ["hpc_results/flush_flush_hpc/L1D_Write/flush_flush_clock_fixed_hpc", 
+                             "hpc_results/flush_flush_hpc/L1D_Write/flush_flush_rdcycle_hpc", 
 
-                             "hpc_results/fr_hpc/L1D_Write/fr_clock_fixed_hpc", 
-                             "hpc_results/fr_hpc/L1D_Write/fr_rdcycle_hpc", 
-                             "hpc_results/fr_hpc/L1D_Write/fr_perf_event_open_hpc",
+                             "hpc_results/flush_reload_hpc/L1D_Write/flush_reload_clock_fixed_hpc", 
+                             "hpc_results/flush_reload_hpc/L1D_Write/flush_reload_rdcycle_hpc", 
+                             "hpc_results/flush_reload_hpc/L1D_Write/flush_reload_perf_event_open_hpc",
 
-                             "hpc_results/cispa_ff_hpc/L1D_Write/flush_fault_clock_fixed_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1D_Write/flush_fault_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1D_Write/flush_fault_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1D_Write/flush_fault_hpc", 
-                             "hpc_results/cispa_ff_hpc/L1D_Write/flush_fault_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Write/flush_fault_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Write/flush_fault_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Write/flush_fault_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Write/flush_fault_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/L1D_Write/flush_fault_perf_event_open_hpc",
                             
-                             "hpc_results/cispa_fr_hpc/L1D_Write/flush_ret_clock_fixed_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1D_Write/flush_ret_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1D_Write/flush_ret_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1D_Write/flush_ret_hpc", 
-                             "hpc_results/cispa_fr_hpc/L1D_Write/flush_ret_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Write/flush_ret_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Write/flush_ret_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Write/flush_ret_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Write/flush_ret_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/L1D_Write/flush_ret_perf_event_open_hpc",
 
                              "hpc_results/spectre_hpc/L1D_Write/spectre_clock_monotonic_hpc", 
                              "hpc_results/spectre_hpc/L1D_Write/spectre_clock_process_hpc", 
@@ -97,24 +95,24 @@ path_hpc_files: list[str] = ["hpc_results/ff_hpc/L1D_Write/ff_clock_fixed_hpc",
                              "hpc_results/rv8_hpc/L1D_Write/qsort_hpc"]
 """
 """
-path_hpc_files: list[str] = ["hpc_results/ff_hpc/BranchMispredict/ff_clock_fixed_hpc", 
-                             "hpc_results/ff_hpc/BranchMispredict/ff_rdcycle_hpc", 
+path_hpc_files: list[str] = ["hpc_results/flush_flush_hpc/BranchMispredict/flush_flush_clock_fixed_hpc", 
+                             "hpc_results/flush_flush_hpc/BranchMispredict/flush_flush_rdcycle_hpc", 
 
-                             "hpc_results/fr_hpc/BranchMispredict/fr_clock_fixed_hpc", 
-                             "hpc_results/fr_hpc/BranchMispredict/fr_rdcycle_hpc", 
-                             "hpc_results/fr_hpc/BranchMispredict/fr_perf_event_open_hpc",
+                             "hpc_results/flush_reload_hpc/BranchMispredict/flush_reload_clock_fixed_hpc", 
+                             "hpc_results/flush_reload_hpc/BranchMispredict/flush_reload_rdcycle_hpc", 
+                             "hpc_results/flush_reload_hpc/BranchMispredict/flush_reload_perf_event_open_hpc",
 
-                             "hpc_results/cispa_ff_hpc/BranchMispredict/flush_fault_clock_fixed_hpc", 
-                             "hpc_results/cispa_ff_hpc/BranchMispredict/flush_fault_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/BranchMispredict/flush_fault_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/BranchMispredict/flush_fault_hpc", 
-                             "hpc_results/cispa_ff_hpc/BranchMispredict/flush_fault_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_fault_hpc/BranchMispredict/flush_fault_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/BranchMispredict/flush_fault_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/BranchMispredict/flush_fault_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/BranchMispredict/flush_fault_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/BranchMispredict/flush_fault_perf_event_open_hpc",
                             
-                             "hpc_results/cispa_fr_hpc/BranchMispredict/flush_ret_clock_fixed_hpc", 
-                             "hpc_results/cispa_fr_hpc/BranchMispredict/flush_ret_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/BranchMispredict/flush_ret_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/BranchMispredict/flush_ret_hpc", 
-                             "hpc_results/cispa_fr_hpc/BranchMispredict/flush_ret_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_ret_hpc/BranchMispredict/flush_ret_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/BranchMispredict/flush_ret_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/BranchMispredict/flush_ret_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/BranchMispredict/flush_ret_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/BranchMispredict/flush_ret_perf_event_open_hpc",
 
                              "hpc_results/spectre_hpc/BranchMispredict/spectre_clock_monotonic_hpc", 
                              "hpc_results/spectre_hpc/BranchMispredict/spectre_clock_process_hpc", 
@@ -127,24 +125,25 @@ path_hpc_files: list[str] = ["hpc_results/ff_hpc/BranchMispredict/ff_clock_fixed
                              "hpc_results/rv8_hpc/BranchMispredict/miniz_hpc",
                              "hpc_results/rv8_hpc/BranchMispredict/qsort_hpc"]
 """
-path_hpc_files: list[str] = ["hpc_results/ff_hpc/IndirectBranch/ff_clock_fixed_hpc", 
-                             "hpc_results/ff_hpc/IndirectBranch/ff_rdcycle_hpc", 
 
-                             "hpc_results/fr_hpc/IndirectBranch/fr_clock_fixed_hpc", 
-                             "hpc_results/fr_hpc/IndirectBranch/fr_rdcycle_hpc", 
-                             "hpc_results/fr_hpc/IndirectBranch/fr_perf_event_open_hpc",
+path_hpc_files: list[str] = ["hpc_results/flush_flush_hpc/IndirectBranch/flush_flush_clock_fixed_hpc", 
+                             "hpc_results/flush_flush_hpc/IndirectBranch/flush_flush_rdcycle_hpc", 
 
-                             "hpc_results/cispa_ff_hpc/IndirectBranch/flush_fault_clock_fixed_hpc", 
-                             "hpc_results/cispa_ff_hpc/IndirectBranch/flush_fault_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/IndirectBranch/flush_fault_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_ff_hpc/IndirectBranch/flush_fault_hpc", 
-                             "hpc_results/cispa_ff_hpc/IndirectBranch/flush_fault_perf_event_open_hpc",
+                             "hpc_results/flush_reload_hpc/IndirectBranch/flush_reload_clock_fixed_hpc", 
+                             "hpc_results/flush_reload_hpc/IndirectBranch/flush_reload_rdcycle_hpc", 
+                             "hpc_results/flush_reload_hpc/IndirectBranch/flush_reload_perf_event_open_hpc",
+
+                             "hpc_results/cispa_flush_fault_hpc/IndirectBranch/flush_fault_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/IndirectBranch/flush_fault_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/IndirectBranch/flush_fault_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/IndirectBranch/flush_fault_hpc", 
+                             "hpc_results/cispa_flush_fault_hpc/IndirectBranch/flush_fault_perf_event_open_hpc",
                             
-                             "hpc_results/cispa_fr_hpc/IndirectBranch/flush_ret_clock_fixed_hpc", 
-                             "hpc_results/cispa_fr_hpc/IndirectBranch/flush_ret_clock_fixed_process_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/IndirectBranch/flush_ret_clock_fixed_thread_id_hpc", 
-                             "hpc_results/cispa_fr_hpc/IndirectBranch/flush_ret_hpc", 
-                             "hpc_results/cispa_fr_hpc/IndirectBranch/flush_ret_perf_event_open_hpc",
+                             "hpc_results/cispa_flush_ret_hpc/IndirectBranch/flush_ret_clock_fixed_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/IndirectBranch/flush_ret_clock_fixed_process_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/IndirectBranch/flush_ret_clock_fixed_thread_id_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/IndirectBranch/flush_ret_hpc", 
+                             "hpc_results/cispa_flush_ret_hpc/IndirectBranch/flush_ret_perf_event_open_hpc",
 
                              "hpc_results/spectre_hpc/IndirectBranch/spectre_clock_monotonic_hpc", 
                              "hpc_results/spectre_hpc/IndirectBranch/spectre_clock_process_hpc", 
@@ -187,15 +186,34 @@ results: dict = {
     "Indirect Branch Mispredict Counter": [],
 }
 """
+
 results: dict = {
     "Indirect Branch Mispredict Counter": [],
     "Indirect Branch Instruction Counter": [],
     "Ratio Indirect Branch Counter": []
 }
 
+# hpc1: Miss
+# hpc2: Access
 
 for path in path_hpc_files:
-    current_path: str = path + "/hpc1.txt"
+    current_path = path + "/hpc1.txt"
+    if list(results.keys())[0] == "Indirect Branch Mispredict Counter":
+        current_path = path + "/hpc2.txt"
+    data_miss = pd.read_csv(current_path, header=None)
+    data_miss = pd.DataFrame(data_miss)
+    min_miss = data_miss[0].min()
+    max_miss = data_miss[0].max()
+    median_miss = data_miss[0].median()
+    mean_miss = data_miss[0].mean(numeric_only=True)
+    print(f"Min (Attacker access): \t\t{min_miss}") 
+    print(f"Max (Attacker access): \t\t{max_miss}")
+    print(f"Median (Attacker access): \t{median_miss}")
+    print(f"Mean (Attacker access): \t\t{mean_miss}")
+
+    current_path: str = path + "/hpc2.txt"
+    if list(results.keys())[0] == "Indirect Branch Mispredict Counter":
+            current_path = path + "/hpc1.txt"
     data_access  = pd.read_csv(current_path, header=None)
     data_access = pd.DataFrame(data_access)
 
@@ -207,18 +225,6 @@ for path in path_hpc_files:
     print(f"Max (Attacker access): \t\t{max_access}")
     print(f"Median (Attacker access): \t{median_access}")
     print(f"Mean (Attacker access): \t\t{mean_access}")
-
-    current_path = path + "/hpc2.txt"
-    data_miss = pd.read_csv(current_path, header=None)
-    data_miss = pd.DataFrame(data_miss)
-    min_miss = data_miss[0].min()
-    max_miss = data_miss[0].max()
-    median_miss = data_miss[0].median()
-    mean_miss = data_miss[0].mean(numeric_only=True)
-    print(f"Min (Attacker access): \t\t{min_miss}") 
-    print(f"Max (Attacker access): \t\t{max_miss}")
-    print(f"Median (Attacker access): \t{median_miss}")
-    print(f"Mean (Attacker access): \t\t{mean_miss}")
 
     ratio = mean_miss / mean_access
 
@@ -246,10 +252,11 @@ for path in path_hpc_files:
     results["Indirect Branch Mispredict Counter"].append(mean_access)
     results["Conditional Branch Mispredict Counter"].append(mean_miss)
     """
-    results["Indirect Branch Mispredict Counter"].append(mean_access)
-    results["Indirect Branch Instruction Counter"].append(mean_miss)
+    
+    results["Indirect Branch Mispredict Counter"].append(mean_miss)
+    results["Indirect Branch Instruction Counter"].append(mean_access)
     results["Ratio Indirect Branch Counter"].append(ratio)
-
+    
 
 ## Bar chart
 
@@ -275,16 +282,5 @@ for k in results.keys():
     plt.savefig(f"plots/{k.replace(" ", "_")}")
 
     plt.show()
-"""
-fig, ax = plt.subplots(layout='constrained')
 
-res = ax.grouped_bar(results, tick_label=names, group_spacing=1)
-for container in res.bar_containers:
-    ax.bar_label(container, padding=3)
-
-ax.set_ylabel("Number of instruction")
-ax.set_title("HPC study per process")
-ax.legend(loc="upper left", ncols=3)
-
-plt.show()
-"""
+print(list(results.keys())[0])
