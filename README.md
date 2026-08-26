@@ -1,6 +1,6 @@
 # Timerfree-RISC-V
 
-Repository of the paper "Timerfree cache timing attacks on RISC-V".
+Repository of the paper ["RISC‑V Microarchitectural Attacks: No Timer, No Problem?"](https://ieeexplore.ieee.org/document/11666965).
 
 ## Materials
 
