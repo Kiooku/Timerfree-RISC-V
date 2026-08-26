@@ -50,7 +50,7 @@ If you use our results in your research, please cite our paper as:
 And our artifacts as:
 ```
 @misc{11666965,
-  author={Khan, Mahreen and Bois--Baumann, Gaètan and Mushtaq, Maria and Pacalet, Renaud and Apvrille, Ludovic},
+  author={Khan, Mahreen and Bois--Baumann, Gaétan and Mushtaq, Maria and Pacalet, Renaud and Apvrille, Ludovic},
   url = {https://github.com/Kiooku/Timerfree-RISC-V},
   title={RISC‑V Microarchitectural Attacks: No Timer, No Problem?}, 
   year={2026}
