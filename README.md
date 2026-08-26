@@ -34,7 +34,17 @@ You'll find all the atacks explained in the paper:
 
 If you use our results in your research, please cite our paper as:
 ```
-TODO
+@ARTICLE{11666965,
+  author={Khan, Mahreen and Bois--Baumann, Gaétan and Mushtaq, Maria and Pacalet, Renaud and Apvrille, Ludovic},
+  journal={IEEE Embedded Systems Letters}, 
+  title={RISC‑V Microarchitectural Attacks: No Timer, No Problem?}, 
+  year={2026},
+  volume={},
+  number={},
+  pages={1-1},
+  keywords={Timing;Radiation detectors;Reduced instruction set computing;Clocks;Indexes;Indexing;Linux;Loading;Radio access networks;Regional area networks;RISC-V;microarchitecture;cache attacks;timer restriction;transient execution},
+  doi={10.1109/LES.2026.3726619}}
+
 ```
 
 And our artifacts as:
